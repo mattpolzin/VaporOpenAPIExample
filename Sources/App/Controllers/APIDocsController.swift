@@ -18,9 +18,8 @@ final class APIDocsController {
         self.app = app
     }
 
-    func view(_ req: TypedRequest<ViewContext>) -> Response {
-        let response = Response(
-            body:
+    func view(_ req: TypedRequest<ViewContext>) -> EventLoopFuture<Response> {
+        let html =
 """
 <!DOCTYPE html>
 <html>
@@ -47,11 +46,8 @@ final class APIDocsController {
   </body>
 </html>
 """
-        )
 
-        response.headers.contentType = .html
-
-        return response
+        return req.response.success.encode(html)
     }
 
     func show(_ req: TypedRequest<ShowContext>) throws -> EventLoopFuture<Response> {
