@@ -10,14 +10,7 @@ import Vapor
 import Sampleable
 import OpenAPIKit
 
-struct HelloWorld: Codable, ResponseEncodable {
-    func encodeResponse(for request: Request) -> EventLoopFuture<Response> {
-        return request.eventLoop
-            .makeSucceededFuture(())
-            .flatMapThrowing {
-                try Response(body: .init(data: JSONEncoder().encode(self)))
-        }
-    }
+struct HelloWorld: Codable {
 
     let language: Language
     let greeting: String
@@ -38,6 +31,16 @@ struct HelloWorld: Codable, ResponseEncodable {
 
         static var allCasesString: String {
             Self.allCases.map { $0.rawValue }.joined(separator: ", ")
+        }
+    }
+}
+
+extension HelloWorld: ResponseEncodable {
+    func encodeResponse(for request: Request) -> EventLoopFuture<Response> {
+        return request.eventLoop
+            .makeSucceededFuture(())
+            .flatMapThrowing {
+                try Response(body: .init(data: JSONEncoder().encode(self)))
         }
     }
 }
