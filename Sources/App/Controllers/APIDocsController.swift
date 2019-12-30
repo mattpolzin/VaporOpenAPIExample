@@ -78,22 +78,13 @@ This text supports _markdown_!
             OpenAPI.Server(url: URL(string: "http://localhost")!)
         ]
 
-        let components = OpenAPI.Components(
-            schemas: [:],
-            responses: [:],
-            parameters: [:],
-            examples: [:],
-            requestBodies: [:],
-            headers: [:]
-        )
-
         let paths = try app.routes.openAPIPathItems(using: jsonEncoder)
 
         let document = OpenAPI.Document(
             info: info,
             servers: servers,
             paths: paths,
-            components: components
+            components: .noComponents
         )
 
         return req
