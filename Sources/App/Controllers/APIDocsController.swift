@@ -84,7 +84,8 @@ This text supports _markdown_!
             info: info,
             servers: servers,
             paths: paths,
-            components: .noComponents
+            components: .noComponents,
+            security: []
         )
 
         return req
