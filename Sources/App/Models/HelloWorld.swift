@@ -9,6 +9,7 @@ import Foundation
 import Vapor
 import Sampleable
 import OpenAPIKit
+import OpenAPIReflection
 
 struct HelloWorld: Codable {
 
