@@ -51,3 +51,9 @@ extension HelloWorld: Sampleable {
         .init(language: .english)
     }
 }
+
+extension HelloWorld: OpenAPIEncodedSchemaType {
+    static func openAPISchema(using encoder: JSONEncoder) throws -> JSONSchema {
+        return try genericOpenAPISchemaGuess(using: encoder)
+    }
+}

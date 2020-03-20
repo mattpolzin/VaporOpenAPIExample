@@ -22,6 +22,15 @@ final class HelloWorldController {
             .success
             .encode(.init(language: language))
     }
+
+    func create(_ req: TypedRequest<CreateContext>) -> EventLoopFuture<Response> {
+        // does not actually do anything, sorry to say.
+
+        return req
+            .response
+            .success
+            .encode(.init(language: .english))
+    }
 }
 
 // MARK: - Contexts
@@ -50,5 +59,16 @@ extension HelloWorldController {
                     string: "The only available languages are \(HelloWorld.Language.allCasesString)")
             )
         )
+    }
+
+    struct CreateContext: RouteContext {
+        typealias RequestBodyType = HelloWorld
+
+        static let shared = Self()
+
+        let success: ResponseContext<HelloWorld> = .init { response in
+            response.headers.contentType = .json
+            response.status = .created
+        }
     }
 }

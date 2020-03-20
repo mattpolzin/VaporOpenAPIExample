@@ -18,4 +18,9 @@ func routes(_ app: Application) throws {
         .summary("View a greeting")
         .description("Say hello in one of the supported languages!")
         .tags("Greetings")
+
+    app.post("hello", use: HelloWorldController().create)
+        .summary("Create a greeting")
+        .description("The endpoint is not actually implemented. It is just mocked up.")
+        .tags("Greetings")
 }
