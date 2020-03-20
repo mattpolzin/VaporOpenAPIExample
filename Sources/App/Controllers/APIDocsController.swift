@@ -100,7 +100,7 @@ extension APIDocsController {
     struct ShowContext: RouteContext {
         typealias RequestBodyType = EmptyRequestBody
 
-        static let shared = Self()
+        static var shared: Self { RouteContextCache[key, default: Self()] }
 
         let success: ResponseContext<String> = .init { response in
             response.headers.contentType = .init(type: "application", subType: "x-yaml")
@@ -111,7 +111,7 @@ extension APIDocsController {
     struct ViewContext: RouteContext {
         typealias RequestBodyType = EmptyRequestBody
 
-        static let shared = Self()
+        static var shared: Self { RouteContextCache[key, default: Self()] }
 
         let success: ResponseContext<String> = .init { response in
             response.headers.contentType = .html

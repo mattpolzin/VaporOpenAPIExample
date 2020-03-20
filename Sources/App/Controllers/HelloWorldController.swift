@@ -38,7 +38,7 @@ extension HelloWorldController {
     struct ShowContext: RouteContext {
         typealias RequestBodyType = EmptyRequestBody
 
-        static let shared = Self()
+        static var shared: Self { RouteContextCache[key, default: Self()] }
 
         let language: StringQueryParam = .init(
             name: "language",
@@ -64,7 +64,7 @@ extension HelloWorldController {
     struct CreateContext: RouteContext {
         typealias RequestBodyType = HelloWorld
 
-        static let shared = Self()
+        static var shared: Self { RouteContextCache[key, default: Self()] }
 
         let success: ResponseContext<HelloWorld> = .init { response in
             response.headers.contentType = .json
