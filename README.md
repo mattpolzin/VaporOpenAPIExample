@@ -2,7 +2,7 @@
 
 This example shows off an early stage project to both add type information to Vapor requests/responses and also take advantage of that information to generate OpenAPI documentation.
 
-Note that this app and the libraries it showcases are built off of Vapor's upcoming version 4 release.
+Note that this app and the libraries it showcases are built off of Vapor 4.
 
 The example app serves up OpenAPI documentation on itself using the beautiful Redoc viewer.
 

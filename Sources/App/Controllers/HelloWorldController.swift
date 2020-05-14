@@ -38,6 +38,7 @@ extension HelloWorldController {
     struct ShowContext: RouteContext {
         typealias RequestBodyType = EmptyRequestBody
 
+        static let defaultContentType: HTTPMediaType? = nil
         static let shared = Self()
 
         let language: StringQueryParam = .init(
@@ -64,6 +65,7 @@ extension HelloWorldController {
     struct CreateContext: RouteContext {
         typealias RequestBodyType = HelloWorld
 
+        static let defaultContentType: HTTPMediaType? = nil
         static let shared = Self()
 
         let success: ResponseContext<HelloWorld> = .init { response in

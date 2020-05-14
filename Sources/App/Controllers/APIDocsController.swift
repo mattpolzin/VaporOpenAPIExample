@@ -100,6 +100,7 @@ extension APIDocsController {
     struct ShowContext: RouteContext {
         typealias RequestBodyType = EmptyRequestBody
 
+        static let defaultContentType: HTTPMediaType? = nil
         static let shared = Self()
 
         let success: ResponseContext<String> = .init { response in
@@ -111,6 +112,7 @@ extension APIDocsController {
     struct ViewContext: RouteContext {
         typealias RequestBodyType = EmptyRequestBody
 
+        static let defaultContentType: HTTPMediaType? = nil
         static let shared = Self()
 
         let success: ResponseContext<String> = .init { response in
