@@ -20,32 +20,32 @@ final class APIDocsController {
 
     func view(_ req: TypedRequest<ViewContext>) -> EventLoopFuture<Response> {
         let html =
-"""
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>ReDoc</title>
-    <!-- needed for adaptive design -->
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Roboto:300,400,700" rel="stylesheet">
+        """
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <title>ReDoc</title>
+            <!-- needed for adaptive design -->
+            <meta charset="utf-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Roboto:300,400,700" rel="stylesheet">
 
-    <!--
-    ReDoc doesn't change outer page styles
-    -->
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-      }
-    </style>
-  </head>
-  <body>
-    <redoc spec-url='/docs/openapi.yml'></redoc>
-    <script src="https://cdn.jsdelivr.net/npm/redoc@next/bundles/redoc.standalone.js"> </script>
-  </body>
-</html>
-"""
+            <!--
+            ReDoc doesn't change outer page styles
+            -->
+            <style>
+              body {
+                margin: 0;
+                padding: 0;
+              }
+            </style>
+          </head>
+          <body>
+            <redoc spec-url='/docs/openapi.yml'></redoc>
+            <script src="https://cdn.jsdelivr.net/npm/redoc@next/bundles/redoc.standalone.js"> </script>
+          </body>
+        </html>
+        """
 
         return req.response.success.encode(html)
     }
@@ -66,16 +66,15 @@ final class APIDocsController {
         let info = OpenAPI.Document.Info(
             title: "Vapor OpenAPI Example API",
             description:
-###"""
-## Descriptive Text
-This text supports _markdown_!
-"""###,
+            ###"""
+            ## Descriptive Text
+            This text supports _markdown_!
+            """###,
             version: "1.0"
         )
 
-        // TODO: get hostname & port from environment
         let servers = [
-            OpenAPI.Server(url: URL(string: "http://localhost")!)
+            OpenAPI.Server(url: URL(string: "https://\(app.http.server.configuration.hostname)")!)
         ]
 
         let paths = try app.routes.openAPIPathItems(using: jsonEncoder)
