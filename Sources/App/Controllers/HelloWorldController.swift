@@ -9,7 +9,7 @@ import Vapor
 import VaporOpenAPI
 
 final class HelloWorldController {
-    func show(_ req: TypedRequest<ShowContext>) -> EventLoopFuture<Response> {
+    static func show(_ req: TypedRequest<ShowContext>) -> EventLoopFuture<Response> {
         let requestedLanguage = req.query.language
             .flatMap { HelloWorld.Language(rawValue: $0) }
 
@@ -23,13 +23,22 @@ final class HelloWorldController {
             .encode(.init(language: language))
     }
 
-    func create(_ req: TypedRequest<CreateContext>) -> EventLoopFuture<Response> {
+    static func create(_ req: TypedRequest<CreateContext>) -> EventLoopFuture<Response> {
         // does not actually do anything, sorry to say.
 
         return req
             .response
             .success
             .encode(.init(language: .english))
+    }
+
+    static func delete(_ req: TypedRequest<DeleteContext>) -> EventLoopFuture<Response> {
+        // also does not actually perform a DELETE
+
+        return req
+            .response
+            .success
+            .encodeEmptyResponse()
     }
 }
 
@@ -71,6 +80,17 @@ extension HelloWorldController {
         let success: ResponseContext<HelloWorld> = .init { response in
             response.headers.contentType = .json
             response.status = .created
+        }
+    }
+
+    struct DeleteContext: RouteContext {
+        typealias RequestBodyType = EmptyRequestBody
+
+        static let defaultContentType: HTTPMediaType? = nil
+        static let shared = Self()
+
+        let success: ResponseContext<EmptyResponseBody> = .init { response in
+            response.status = .noContent
         }
     }
 }
