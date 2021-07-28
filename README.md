@@ -17,23 +17,10 @@ info:
   description: '## Descriptive Text
 
     This text supports _markdown_!'
-  version: 1.0
+  version: '1.0'
 servers:
-- url: http://localhost
+- url: https://127.0.0.1
 paths:
-  /docs/openapi.yml:
-    get:
-      tags:
-      - Documentation
-      summary: Download API Documentation
-      description: Retrieve the OpenAPI documentation as a YAML file.
-      responses:
-        200:
-          description: OK
-          content:
-            application/x-yaml:
-              schema:
-                type: string
   /docs:
     get:
       tags:
@@ -45,6 +32,19 @@ paths:
           description: OK
           content:
             text/html:
+              schema:
+                type: string
+  /docs/openapi.yml:
+    get:
+      tags:
+      - Documentation
+      summary: Download API Documentation
+      description: Retrieve the OpenAPI documentation as a YAML file.
+      responses:
+        200:
+          description: OK
+          content:
+            application/x-yaml:
               schema:
                 type: string
   /hello:
@@ -69,13 +69,13 @@ paths:
               schema:
                 type: object
                 properties:
+                  greeting:
+                    type: string
                   language:
                     type: string
                     enum:
                     - english
                     - spanish
-                  greeting:
-                    type: string
                 required:
                 - greeting
                 - language
@@ -85,11 +85,50 @@ paths:
             text/plain:
               schema:
                 type: string
-components:
-  schemas: {}
-  responses: {}
-  parameters: {}
-  examples: {}
-  requestBodies: {}
-  headers: {}
+    post:
+      tags:
+      - Greetings
+      summary: Create a greeting
+      description: The endpoint is not actually implemented. It is just mocked up.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                language:
+                  type: string
+                  enum:
+                  - english
+                  - spanish
+                greeting:
+                  type: string
+              required:
+              - greeting
+              - language
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  greeting:
+                    type: string
+                  language:
+                    type: string
+                    enum:
+                    - english
+                    - spanish
+                required:
+                - greeting
+                - language
+    delete:
+      tags:
+      - Greetings
+      summary: Delete a greeting
+      responses:
+        204:
+          description: No Content
 ```

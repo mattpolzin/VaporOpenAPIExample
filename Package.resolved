@@ -177,8 +177,8 @@
         "repositoryURL": "https://github.com/mattpolzin/VaporOpenAPI.git",
         "state": {
           "branch": null,
-          "revision": "4207a0a9d18cc1c9b532307b240c6144b6079add",
-          "version": "0.0.16"
+          "revision": "86312d273770e2519d6b2e1247a46f9787d3ece3",
+          "version": "0.0.17"
         }
       },
       {
