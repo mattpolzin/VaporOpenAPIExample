@@ -1,16 +1,16 @@
-// swift-tools-version:5.2
+// swift-tools-version:5.5
 
 import PackageDescription
 
 let package = Package(
     name: "openapi-example",
     platforms: [
-       .macOS(.v10_15)
+       .macOS(.v12)
     ],
     dependencies: [
         .package(url: "https://github.com/vapor/vapor.git", from: "4.5.0"),
-        .package(url: "https://github.com/jpsim/Yams.git", from: "4.0.0"),
-        .package(url: "https://github.com/mattpolzin/VaporOpenAPI.git", .exact("0.0.17"))
+        .package(url: "https://github.com/jpsim/Yams.git", from: "5.0.0"),
+        .package(url: "https://github.com/mattpolzin/VaporOpenAPI.git", .branch("openapikit-3"))
     ],
     targets: [
         .target(name: "App", dependencies: [
@@ -18,7 +18,7 @@ let package = Package(
             "VaporOpenAPI",
             "Yams"
         ]),
-        .target(name: "Run", dependencies: ["App"]),
+        .executableTarget(name: "Run", dependencies: ["App"]),
         .testTarget(name: "AppTests", dependencies: [
             "App", 
             .product(name: "XCTVapor", package: "vapor")

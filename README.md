@@ -6,6 +6,8 @@ Note that this app and the libraries it showcases are built off of Vapor 4.
 
 The example app serves up OpenAPI documentation on itself using the beautiful Redoc viewer.
 
+The OpenAPI document produced is compatible with the OpenAPI specification v3.1.x.
+
 ![Documentation served by example app](./Screen%20Shot%202019-12-28%20at%207.18.48%20PM.png)
 
 The OpenAPI it produces contains (among other things) routes, path and query parameters, and success and error responses including response body schemas.
