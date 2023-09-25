@@ -13,7 +13,7 @@ The OpenAPI document produced is compatible with the OpenAPI specification v3.1.
 The OpenAPI it produces contains (among other things) routes, path and query parameters, and success and error responses including response body schemas.
 
 ```yaml
-openapi: 3.0.0
+openapi: 3.1.0
 info:
   title: Vapor OpenAPI Example API
   description: '## Descriptive Text
@@ -21,7 +21,7 @@ info:
     This text supports _markdown_!'
   version: '1.0'
 servers:
-- url: https://127.0.0.1
+- url: https://0.0.0.0
 paths:
   /docs:
     get:
@@ -71,16 +71,16 @@ paths:
               schema:
                 type: object
                 properties:
-                  greeting:
-                    type: string
                   language:
                     type: string
                     enum:
                     - english
                     - spanish
+                  greeting:
+                    type: string
                 required:
-                - greeting
                 - language
+                - greeting
         400:
           description: Bad Request
           content:
@@ -106,8 +106,8 @@ paths:
                 greeting:
                   type: string
               required:
-              - greeting
               - language
+              - greeting
       responses:
         201:
           description: Created
@@ -116,16 +116,16 @@ paths:
               schema:
                 type: object
                 properties:
-                  greeting:
-                    type: string
                   language:
                     type: string
                     enum:
                     - english
                     - spanish
+                  greeting:
+                    type: string
                 required:
-                - greeting
                 - language
+                - greeting
     delete:
       tags:
       - Greetings
