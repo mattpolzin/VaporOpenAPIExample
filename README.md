@@ -21,7 +21,7 @@ info:
     This text supports _markdown_!'
   version: '1.0'
 servers:
-- url: https://0.0.0.0
+- url: https://127.0.0.1
 paths:
   /docs:
     get:
