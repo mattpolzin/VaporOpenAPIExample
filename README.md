@@ -6,12 +6,14 @@ Note that this app and the libraries it showcases are built off of Vapor 4.
 
 The example app serves up OpenAPI documentation on itself using the beautiful Redoc viewer.
 
+The OpenAPI document produced is compatible with the OpenAPI specification v3.1.x.
+
 ![Documentation served by example app](./Screen%20Shot%202019-12-28%20at%207.18.48%20PM.png)
 
 The OpenAPI it produces contains (among other things) routes, path and query parameters, and success and error responses including response body schemas.
 
 ```yaml
-openapi: 3.0.0
+openapi: 3.1.0
 info:
   title: Vapor OpenAPI Example API
   description: '## Descriptive Text
@@ -69,16 +71,16 @@ paths:
               schema:
                 type: object
                 properties:
-                  greeting:
-                    type: string
                   language:
                     type: string
                     enum:
                     - english
                     - spanish
+                  greeting:
+                    type: string
                 required:
-                - greeting
                 - language
+                - greeting
         400:
           description: Bad Request
           content:
@@ -104,8 +106,8 @@ paths:
                 greeting:
                   type: string
               required:
-              - greeting
               - language
+              - greeting
       responses:
         201:
           description: Created
@@ -114,16 +116,16 @@ paths:
               schema:
                 type: object
                 properties:
-                  greeting:
-                    type: string
                   language:
                     type: string
                     enum:
                     - english
                     - spanish
+                  greeting:
+                    type: string
                 required:
-                - greeting
                 - language
+                - greeting
     delete:
       tags:
       - Greetings

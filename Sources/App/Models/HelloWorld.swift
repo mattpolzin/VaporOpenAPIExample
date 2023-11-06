@@ -46,6 +46,12 @@ extension HelloWorld: ResponseEncodable {
     }
 }
 
+extension HelloWorld: AsyncResponseEncodable {
+    func encodeResponse(for request: Request) async throws -> Response {
+        try Response(body: .init(data: JSONEncoder().encode(self)))
+    }
+}
+
 extension HelloWorld: Sampleable {
     static var sample: HelloWorld {
         .init(language: .english)
