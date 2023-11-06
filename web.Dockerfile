@@ -1,7 +1,7 @@
 # ================================
 # Build image
 # ================================
-FROM swift:5.8 as build
+FROM swift:5.9 as build
 WORKDIR /build
 
 # Copy entire repo into container
@@ -15,7 +15,7 @@ RUN swift build \
 # ================================
 # Run image
 # ================================
-FROM swift:5.8
+FROM swift:5.9
 WORKDIR /run
 
 # Copy build artifacts
