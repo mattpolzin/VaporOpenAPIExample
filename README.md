@@ -13,7 +13,7 @@ The OpenAPI document produced is compatible with the OpenAPI specification v3.1.
 The OpenAPI it produces contains (among other things) routes, path and query parameters, and success and error responses including response body schemas.
 
 ```yaml
-openapi: 3.1.0
+openapi: 3.1.1
 info:
   title: Vapor OpenAPI Example API
   description: '## Descriptive Text

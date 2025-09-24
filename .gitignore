@@ -6,4 +6,5 @@ DerivedData/
 .DS_Store
 db.sqlite
 .swiftpm
+harmony.json
 
