@@ -10,7 +10,7 @@ import VaporOpenAPI
 import Foundation
 import Yams
 
-final class APIDocsController {
+final class APIDocsController: Sendable {
 
     let app: Application
 

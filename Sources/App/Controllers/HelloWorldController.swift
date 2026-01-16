@@ -8,7 +8,7 @@
 import Vapor
 import VaporOpenAPI
 
-final class HelloWorldController {
+final class HelloWorldController: Sendable {
     static func show(_ req: TypedRequest<ShowContext>) -> EventLoopFuture<Response> {
         let requestedLanguage = req.query.language
             .flatMap { HelloWorld.Language(rawValue: $0) }
