@@ -27,8 +27,8 @@ final class APIDocsController: Sendable {
             <title>ReDoc</title>
             <!-- needed for adaptive design -->
             <meta charset="utf-8"/>
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Roboto:300,400,700" rel="stylesheet">
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Roboto:300,400,700" rel="stylesheet" />
 
             <!--
             ReDoc doesn't change outer page styles
@@ -42,7 +42,7 @@ final class APIDocsController: Sendable {
           </head>
           <body>
             <redoc spec-url='/docs/openapi.yml'></redoc>
-            <script src="https://cdn.jsdelivr.net/npm/redoc@next/bundles/redoc.standalone.js"> </script>
+            <script type="module" src="https://cdn.redoc.ly/redoc/v3.0.0-rc.0/redoc.standalone.js"></script>
           </body>
         </html>
         """
