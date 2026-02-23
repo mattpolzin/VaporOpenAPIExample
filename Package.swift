@@ -10,7 +10,7 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/vapor/vapor.git", from: "4.86.0"),
         .package(url: "https://github.com/jpsim/Yams.git", from: "6.0.0"),
-        .package(url: "https://github.com/mattpolzin/VaporOpenAPI.git", branch: "feature/openapikit-5")
+        .package(url: "https://github.com/mattpolzin/VaporOpenAPI.git", .upToNextMinor(from: "0.9.0"))
     ],
     targets: [
         .target(name: "App", dependencies: [
